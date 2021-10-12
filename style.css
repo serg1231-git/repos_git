@@ -1,8 +1,14 @@
-table{
-    text-align: center;
-    border-collapse: collapse;
+img{
+    width: 200px;
+    height: 200px;
 }
-th,td{
-    padding: 2px;
-    border: 1px solid red;
-    }
+#styles{
+    width: 750px;
+    height: 220px;
+    border:2px solid red;
+}
+#mousemove{
+    width: 750px;
+    height: 250px;
+    border: 2px solid green;
+}

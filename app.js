@@ -1,50 +1,47 @@
-users=[
-    {"fio":"Прийма С.С","phone":"+380935622387"},
-    {"fio":"Семенов А.С","phone":"+380965232596"},
-    {"fio":"Вавилов А.М","phone":"+380501253685"},
-    {"fio":"Макаров Н.В.","phone":"+380975412536"},
-    {"fio":"Андреев А.С.","phone":"+380985235896"},
-    {"fio":"Билинский Р.С.","phone":"+380505823652"},
-    {"fio":"Дмитров М.В.","phone":"+380953026535"},
-    {"fio":"Байрамов М.В","phone":"+380672530253"},
-    {"fio":"Давиденко С.С.","phone":"+380968777777"},
-    {"fio":"Данилов М.Л.","phone":"+380931777772"},
-    {"fio":"Антонов М.С","phone":"+380672176010"},
-    {"fio":"Кондратьев К.С.","phone":"+380504180697"},
-    {"fio":"Альтрухин И.С.","phone":"+380504180695"},
-    {"fio":"Владимиров К.О","phone":"+380632829292"},
-    {"fio":"Васильева А.С.","phone":"+380672176020"},
-    {"fio":"Камаров С.В.","phone":"+380937027555"},
-    {"fio":"Сергеев А.В.","phone":"+380963447777"},
-    {"fio":"Марков М.А.","phone":"+380937015555"}
-];
-var table=document.createElement('table');
-var colums=[];
-for(var item of users)
+
+document.addEventListener("DOMContentLoaded",function(){
+    console.log('DOM ready !!!!');
+})
+function getsource(element)
 {
-    for(var key in item)
+    const source=element.src;
+    console.log(source);
+}
+function div_click()
+{
+    var container=document.querySelectorAll('div > img');
+    container.forEach((image)=>{
+        image.addEventListener('click',()=>{
+            getsource(image);
+        });
+    });
+}
+var div_mousemove=document.getElementById('mousemove');
+div_mousemove.addEventListener("mousemove",function(e){
+    var x=e.clientX;
+    var y=e.clientY;
+    console.log('x',x);
+    console.log('y',y);
+    })
+div_mousemove.addEventListener('mouseout',function(){
+    alert('div out');
+})
+var left=0;
+var image_pos=document.getElementById('image_position');
+document.onkeydown=function(event)
+{
+    if(event.keyCode==39)
     {
-        if (colums.indexOf(key)===-1)
-        {
-            colums.push(key);
-        }
+        left=left+10;
+        image_pos.style.left=left+'px';
+    }
+    if(event.keyCode==37)
+    {
+        left=left-10;
+        image_pos.style.left=left+'px';
+    }
+    if(left==560 || left<10)
+    {
+        left=10;
     }
 }
-var row=table.insertRow(-1);
-for(var i=0; i<colums.length; i++)
-{
-    var th=document.createElement("th");
-    th.innerHTML=colums[i];
-    row.appendChild(th);
-}
-for(var item of users)
-{
-    row=table.insertRow(-1);
-    for(var j=0; j<colums.length; j++)
-    {
-        var tablecell=row.insertCell(-1);
-        tablecell.innerHTML=item[colums[j]];
-    }
-}
-var add_table=document.getElementById("tables");
-add_table.appendChild(table);

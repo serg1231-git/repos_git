@@ -1,11 +1,17 @@
 <html>
     <head>
-        <title>Project 5</title>
+        <meta charset="utf-8">
         <link rel="stylesheet" href="style.css">
     </head>
-    <body>
-        <h1><p align="center">Information of student</p></h1>
-        <p id="tables"></p>
+    <body onload="console.log('Body load')" onerror="console.log('Error load body')">
+        <div id="styles" onclick="div_click()">
+            <img src="image/images.jpg">
+            <img src="image/index.jpg">
+            <img src="image/new.jpeg">
+        </div>
+        <div id="mousemove">
+            <img src="image/train.gif" id="image_position" style="position: absolute;">
+        </div>
         <script src="app.js"></script>
     </body>
 </html>
