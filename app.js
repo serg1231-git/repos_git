@@ -1,43 +1,92 @@
-function filter(array,fn){
-    var listnew=[];
-    for (var i=0; i<array.length; i++)
+var customer=[
+    {Name:'Sergey',Age:'25'},
+    {Name:'Andrey',Age:'18'},
+    {Name:'Semen',Age:'20'},
+    {Name:'Ruslan',Age:'23'},
+    {Name:'Igor',Age:'21'},
+    {Name:'Daniil',Age:'24'},
+    {Name:'Denis',Age:'20'},
+    {Name:'Dmitriy',Age:'20'},
+    {Name:'Danis',Age:'23'},
+    {Name:'Danid',Age:'22'},
+    {Name:'Eduard',Age:'27'}
+]
+var table=document.createElement('table');
+var colums=[];
+for(var item of customer){
+    for(var key in item)
     {
-        if(!(fn(array[i])%2))
+        if(colums.indexOf(key)===-1)
         {
-            listnew.push(array[i]);
+            colums.push(key);
         }
     }
-    return listnew;
 }
-function div(index) {
-    return index%2==1;   
+var row=table.insertRow(-1);
+for(var i=0; i<colums.length; i++)
+{
+    var th=document.createElement('th');
+    th.innerHTML=colums[i];
+    row.appendChild(th);
 }
-function show(){
-    var video=document.querySelector('#videoConnect');
-    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)
+for(var item of customer){
+    row=table.insertRow(-1);
+    for(var j=0; j<colums.length; j++)
     {
-        navigator.mediaDevices.getUserMedia({video:true}).then(function getStream(stream){
-            video.srcObject=stream;
-            video.play();
-            console.log('Connection video successfully');
-        })
-        .catch(function error_connection(error){
-            console.log('Error connection');
-        })
+        var tablecell=row.insertCell(-1);
+        tablecell.innerHTML=item[colums[j]];
     }
 }
-var url_button=document.getElementById('button_url');
-url_button.addEventListener('click',function(){
-    var input_url=document.getElementById('url_connect');
-    window.location=input_url.value;
-    console.log('Connection successfully',input_url.value);
-});
-var up=document.getElementById('up_id');
-var down=document.getElementById('down_id');
-up.addEventListener('click',function(){
-    console.log('В истории',history.length+' страниц');
-    history.back();
+var table_add=document.getElementById('table_add');
+table_add.appendChild(table);
+function sortTable(n){
+    var row,i,switching,dir,shouldswitch,switchcount=0;
+    switching=true;
+    dir='asc';
+    while(switching){
+        var a,b;
+        switching=false;
+        row=table_add.getElementsByTagName('tr');
+        for(i=1; i<(row.length-1); i++)
+        {
+            shouldswitch=false;
+            a=row[i].getElementsByTagName('td')[n];
+            b=row[i+1].getElementsByTagName('td')[n];
+            if(dir=='asc'){
+                if(a.innerHTML.toLowerCase() > b.innerHTML.toLowerCase()){
+                    shouldswitch=true;
+                    break;
+                }
+            }
+            else if(dir=='desc')
+            {
+                if(a.innerHTML.toLowerCase() < b.innerHTML.toLowerCase()){
+                    shouldswitch=true;
+                    break;
+                }
+            }
+        }
+        if(shouldswitch)
+        {
+            row[i].parentNode.insertBefore(row[i+1],row[i]);
+            switching=true;
+            switchcount++;
+        }
+        else
+        {
+            if(switchcount==0 && dir=='asc')
+            {
+                dir='desc';
+                switching=true;
+            }
+        }
+    }
+}
+var th=document.querySelector('#table_add');
+var results=th.getElementsByTagName('th');
+results[0].addEventListener('click',function(){
+    sortTable(0);
 })
-down.addEventListener('click',function(){
-    history.forward();
+results[1].addEventListener('click',function(){
+    sortTable(1);
 })
