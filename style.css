@@ -1,0 +1,43 @@
+.output
+{
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    position: relative;
+}
+.ball
+{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+#canon
+{
+    width: 5px;
+    height: 20px;
+    background:blue;
+    position: absolute;
+}
+body {
+    margin-left: 15px;
+}
+.bullet
+{
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color:black;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+#hit
+{
+    position: relative;
+    top:-2px;
+    left: 10px;
+}
