@@ -1,0 +1,20 @@
+[
+    {
+        "question": "Укажите email почты ",
+        "type": "textarea"
+    },
+
+    {
+        "question": "Укажите дату рождения ",
+        "type": "date"
+    },
+    {
+        "question": "Укажите пароль от почты ",
+        "type": "password"
+    },
+
+    {
+        "question": "Номер телефона ",
+        "type": "number"
+    }
+]
