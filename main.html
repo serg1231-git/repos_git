@@ -1,16 +1,17 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="style.css">
+        <title>Project 7</title>
     </head>
-    <body onload="console.log('Body load')" onerror="console.log('Error load body')">
-        <div id="styles" onclick="div_click()">
-            <img src="image/images.jpg">
-            <img src="image/index.jpg">
-            <img src="image/new.jpeg">
-        </div>
-        <div id="mousemove">
-            <img src="image/train.gif" id="image_position" style="position: absolute;">
+    <body>
+        <p><label>Input number one:</label><input type="text" id="input_numberone"></p>
+        <p><label>Input number two:</label><input type="text" id="input_numbertwo"></p>
+        <p><label>Result:</label><input type="text" id="result"></p>
+        <div id="operators">
+            <input type="button" value="+" id="add">
+            <input type="button" value="-" id="sub">
+            <input type="button" value="*" id="multi">
+            <input type="button" value="/" id="division">
         </div>
         <script src="app.js"></script>
     </body>

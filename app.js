@@ -1,47 +1,26 @@
-
-document.addEventListener("DOMContentLoaded",function(){
-    console.log('DOM ready !!!!');
-})
-function getsource(element)
-{
-    const source=element.src;
-    console.log(source);
-}
-function div_click()
-{
-    var container=document.querySelectorAll('div > img');
-    container.forEach((image)=>{
-        image.addEventListener('click',()=>{
-            getsource(image);
-        });
+var number_one = document.getElementById('input_numberone').value;
+var number_two = document.getElementById('input_numbertwo').value;
+var result = document.getElementById('result');
+var container = document.querySelectorAll('div >input');
+container.forEach(function (element) {
+    element.addEventListener('click', function () {
+        if (element.id == 'add') {
+            var result_operation = Number(number_one) + Number(number_two);
+            result.value = (result_operation).toString();
+        }
+        else if (element.id == 'sub') {
+            result_operation = Number(number_one) - Number(number_two);
+            result.value = (result_operation).toString();
+        }
+        else if (element.id == 'multi') {
+            result_operation = Number(number_one) * Number(number_two);
+            result.value = (result_operation).toString();
+        }
+        else if (element.id == 'division' && ((Number(number_one) == 0) || Number(number_two) == 0)) {
+            result.innerHTML = 'На ноль делить нельзя';
+        }
+        else {
+            result.value = (Number(number_one) / Number(number_two)).toString();
+        }
     });
-}
-var div_mousemove=document.getElementById('mousemove');
-div_mousemove.addEventListener("mousemove",function(e){
-    var x=e.clientX;
-    var y=e.clientY;
-    console.log('x',x);
-    console.log('y',y);
-    })
-div_mousemove.addEventListener('mouseout',function(){
-    alert('div out');
-})
-var left=0;
-var image_pos=document.getElementById('image_position');
-document.onkeydown=function(event)
-{
-    if(event.keyCode==39)
-    {
-        left=left+10;
-        image_pos.style.left=left+'px';
-    }
-    if(event.keyCode==37)
-    {
-        left=left-10;
-        image_pos.style.left=left+'px';
-    }
-    if(left==560 || left<10)
-    {
-        left=10;
-    }
-}
+});
