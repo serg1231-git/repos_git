@@ -1,0 +1,17 @@
+.output
+{
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    position: relative;
+}
+.ball
+{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
